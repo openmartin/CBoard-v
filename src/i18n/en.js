@@ -1,4 +1,4 @@
-export default  {
+export default {
   "COMMON": {
     "OK": "OK",
     "LOAD": "Load",
@@ -153,9 +153,9 @@ export default  {
       "COXCOMB": "Coxcomb",
       "LINE_BAR": "Line/Bar",
       "POLAR_BAR": "Polar Bar",
-      "AREA_LINE":"Area Line",
-      "STACKED_LINE":"Stacked Line",
-      "PERCENT_LINE":"Percent Line",
+      "AREA_LINE": "Area Line",
+      "STACKED_LINE": "Stacked Line",
+      "PERCENT_LINE": "Percent Line",
       "SCATTER": "Scatter/Bubble",
       "MAP": "China Map",
       "LINE": "Line",
@@ -223,9 +223,9 @@ export default  {
       "CONTRAST": "Contrast",
       "MARK_LINE_MAP": "Mark Line Map",
       "HEAT_MAP": "Heat Map",
-      "SCATTER_MAP":"Scatter Map",
-      "CHINA_MAP":"China Map (Local)",
-      "CHINA_MAP_BMAP":"China Map (Bmap)",
+      "SCATTER_MAP": "Scatter Map",
+      "CHINA_MAP": "China Map (Local)",
+      "CHINA_MAP_BMAP": "China Map (Bmap)",
       "RELATION": "Relation"
     },
     "DASHBOARD": {
@@ -249,14 +249,14 @@ export default  {
       "LINKED_COLUMN": "Columns linked with this param",
       "PARAM_TYPE": "Param Type",
       "PARAM_TYPE_SELECTOR": "Selector",
-	  "PARAM_TYPE_SELECTONE": "Selectone",
-	  "PARAM_TYPE_SELECTIZE": "Selectize",
-    "PARAM_TYPE_RANGEPICKER": "rangePicker",
-    "PARAM_TYPE_RANGESLIDER": "rangeSlider",
-    "PARAM_TYPE_MULTISELECTTREE": "multiSelectTree",
-    "PARAM_TYPE_THREESELECTOR": "threeSelector",
+      "PARAM_TYPE_SELECTONE": "Selectone",
+      "PARAM_TYPE_SELECTIZE": "Selectize",
+      "PARAM_TYPE_RANGEPICKER": "rangePicker",
+      "PARAM_TYPE_RANGESLIDER": "rangeSlider",
+      "PARAM_TYPE_MULTISELECTTREE": "multiSelectTree",
+      "PARAM_TYPE_THREESELECTOR": "threeSelector",
       "PARAM_TYPE_SLIDER": "Slider",
-      "CHART_NAME":"Chart Name",
+      "CHART_NAME": "Chart Name",
       "ENTER_PARAMETER_NAME": "Please enter the parameter name",
       "DASHBOARD_SOMETHING_WRONG": "Some widget access errors, please check the config of the dashboard!",
       "VALUE_FORMMAT": "Value Format",
@@ -285,13 +285,13 @@ export default  {
       "VALUE_FORMMAT_ALERT": "Only date type need format",
       "AUTOMATIC_REFRESH_SWITCH": "Automatic refresh switch",
       "REMOVE_EMPTY_LINES": "Remove empty lines",
-      "DATA_REFRESH_TIME":"Data refresh time",
-      "WIDGET_TARGET":"Correlation Widget",
-      "WIDGET_FIELDS":"Widget Fields",
-      "WIDGET_TARGET_FIELDS":"Correlation Widget Fields",
-      "BOARD_TARGET":"Correlation Board",
-      "BOARD_TARGET_PARAMS":"Correlation Board Params",
-      "RELATION":"Relation"
+      "DATA_REFRESH_TIME": "Data refresh time",
+      "WIDGET_TARGET": "Correlation Widget",
+      "WIDGET_FIELDS": "Widget Fields",
+      "WIDGET_TARGET_FIELDS": "Correlation Widget Fields",
+      "BOARD_TARGET": "Correlation Board",
+      "BOARD_TARGET_PARAMS": "Correlation Board Params",
+      "RELATION": "Relation"
     },
     "CATEGORY": {
       "NAME": "Category Name",
@@ -407,7 +407,7 @@ export default  {
       "QUOTE_CHAR": "quoteChar",
       "ESCAPE_CHAR": "escapeChar"
     },
-    "SOLR":{
+    "SOLR": {
       "SOLR_SERVERS": "Solr Servers",
       "COLLECTION": "Collection",
       "Q": "q",
@@ -418,21 +418,21 @@ export default  {
       "FL": "fl"
     }
   },
-  "CROSS_TABLE":{
+  "CROSS_TABLE": {
     "NEXT_PAGE": "Next",
     "PREVIOUS_PAGE": "Previous",
     "SHOW": "Show",
     "ENTRIES": "entries",
     "EXPORT": "Export"
   },
-  "HELP_MESSAGE":{
-    "CHINAMAP":{
-      "COLUMN":"For the [Mark Line Map] indicating the source of the reticle, Needs 2 or 3 values, 2 values are: 'longitude, latitude', 'geographical name'; 3 values are: 'longitude', 'latitude', 'geographical name'.",
-      "ROW":"Needs 2 or 3 values, 2 values are: 'longitude, latitude', 'geographical name', 3 values are: 'longitude', 'latitude', 'geographical name', map is the [Mark Line Map] indicates the end of the mark."
+  "HELP_MESSAGE": {
+    "CHINAMAP": {
+      "COLUMN": "For the [Mark Line Map] indicating the source of the reticle, Needs 2 or 3 values, 2 values are: 'longitude, latitude', 'geographical name'; 3 values are: 'longitude', 'latitude', 'geographical name'.",
+      "ROW": "Needs 2 or 3 values, 2 values are: 'longitude, latitude', 'geographical name', 3 values are: 'longitude', 'latitude', 'geographical name', map is the [Mark Line Map] indicates the end of the mark."
     },
     "CHINAMAPBMAP": {
-      "COLUMN":"For the [Mark Line Map], indicating the source of the reticle, Needs 2 or 3 values, 2 values are: 'longitude, latitude', 'geographical name'; 3 values are: 'longitude', 'latitude', 'geographical name'.",
-      "ROW":"Needs 2 or 3 values, 2 values are: 'longitude, latitude', 'geographical name', 3 values are: 'longitude', 'latitude', 'geographical name', map is the [Mark Line Map] indicates the end of the mark."
+      "COLUMN": "For the [Mark Line Map], indicating the source of the reticle, Needs 2 or 3 values, 2 values are: 'longitude, latitude', 'geographical name'; 3 values are: 'longitude', 'latitude', 'geographical name'.",
+      "ROW": "Needs 2 or 3 values, 2 values are: 'longitude, latitude', 'geographical name', 3 values are: 'longitude', 'latitude', 'geographical name', map is the [Mark Line Map] indicates the end of the mark."
     }
   }
 }

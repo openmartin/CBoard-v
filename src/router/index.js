@@ -6,10 +6,16 @@ Vue.use(Router)
 
 const Dashboard = () => import('@/views/dashboard/Dashboard');
 const BoardConfig = () => import('@/views/config/board/BoardConfig');
-const BoardConfigContent = () => import('@/views/config/board/BoardConfigContent');
+// const BoardConfigContent = () => import('@/views/config/board/BoardConfigContent');
 
 export default new Router({
+  scrollBehavior: () => ({ y: 0 }),
   routes: [
+    {
+      path: '/login',
+      component: (resolve) => require(['@/views/login'], resolve),
+      hidden: true
+    },
     {
       path: '',
       component: Layout,
@@ -25,7 +31,7 @@ export default new Router({
         component: Dashboard
       }]
     },
-    
+
 
     /*{
       path: '/config',
@@ -71,7 +77,6 @@ export default new Router({
         }
       ]
     },
-
 
   ]
 })

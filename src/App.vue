@@ -8,25 +8,10 @@
 export default {
   name: 'App',
   created() {
-    this.$store.dispatch('menu/getCategoryList');
-    this.$store.dispatch('menu/getBoardList');
-    this.$store.dispatch('menu/getMenuList')
-      .then(() => {
-        this.$router.addRoutes(this.routes);
-        this.$router.beforeEach((to, from, next) => {
-          this.$req.abort();
-          next();
-        })
-      })
-      .catch(() => {})
   },
   mounted() {
-    
   },
   computed: {
-    routes() {
-      return this.$store.state.menu.routes;
-    }
   }
 }
 </script>

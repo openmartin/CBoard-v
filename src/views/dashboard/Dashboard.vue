@@ -8,45 +8,50 @@
       :append-to-body="true"
       @close="handleDialogClose"
       width="80%"
-      center>
-      <component :is="dialogComponent" :widget="dialogWidget" :filters="dialogFilters" :key="dialogName"></component>
+      center
+    >
+      <component
+        :is="dialogComponent"
+        :widget="dialogWidget"
+        :filters="dialogFilters"
+        :key="dialogName"
+      ></component>
     </el-dialog>
-
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Dashboard',
+  name: "Dashboard",
   created() {
-      this.$store.dispatch('dashboard/getBoardData', this.$route.params.id);
-      this.visible = this.$store.state.widget.open;
+    this.$store.dispatch("dashboard/getBoardData", this.$route.params.id);
+    this.visible = this.$store.state.widget.open;
   },
   components: {
-    Grid: () => import('./Grid'),
-    Timeline: () => import('./Timeline'),
-    Gridster: () => import('./Gridster'),
+    Grid: () => import("./Grid"),
+    Timeline: () => import("./Timeline"),
+    Gridster: () => import("./Gridster")
   },
   watch: {
-    '$route' (to, from) {
-      this.$store.dispatch('dashboard/getBoardData', this.$route.params.id);
+    $route(to, from) {
+      this.$store.dispatch("dashboard/getBoardData", this.$route.params.id);
     },
     dialogVisible(newValue, b) {
       this.visible = newValue;
     }
   },
   computed: {
-  	currentComponent: function() {
-      if(!this.$store.state.dashboard.complete) return null;
+    currentComponent: function() {
+      if (!this.$store.state.dashboard.complete) return null;
       const type = this.$store.state.dashboard.type;
-      if(type === 'timeline') {
-        return 'Timeline';
-      }else if(type === 'gridster') {
-        return 'gridster';
-      }else {
-        return 'Grid';
+      if (type === "timeline") {
+        return "Timeline";
+      } else if (type === "gridster") {
+        return "gridster";
+      } else {
+        return "Grid";
       }
-  	},
+    },
     type() {
       return this.$store.state.dashboard.type;
     },
@@ -68,27 +73,26 @@ export default {
   },
   methods: {
     handleDialogClose() {
-      this.$store.commit('widget/closeWidget');
+      this.$store.commit("widget/closeWidget");
     }
   },
-  data () {
+  data() {
     return {
       loading: true,
       visible: false
-    }
+    };
   },
   beforeRouteUpdate(to, from, next) {
-    this.$store.commit('dashboard/reset');  // 将 complete 置为 false，不这样做的话 vuex 会缓存数据，也就是说会一直保持 true
-    this.$store.commit('params/resetFilters'); // 清除 filters
+    this.$store.commit("dashboard/reset"); // 将 complete 置为 false，不这样做的话 vuex 会缓存数据，也就是说会一直保持 true
+    this.$store.commit("params/resetFilters"); // 清除 filters
     next();
   },
   destroyed() {
-    this.$store.commit('dashboard/reset');  // 将 complete 置为 false，不这样做的话 vuex 会缓存数据，也就是说会一直保持 true
-    this.$store.commit('params/resetFilters'); // 清除 filters
+    this.$store.commit("dashboard/reset"); // 将 complete 置为 false，不这样做的话 vuex 会缓存数据，也就是说会一直保持 true
+    this.$store.commit("params/resetFilters"); // 清除 filters
   }
-}
+};
 </script>
 
 <style scoped>
-
 </style>

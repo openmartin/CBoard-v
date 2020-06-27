@@ -157,10 +157,10 @@ export default {
       "LINE": "折线",
       "BAR": "柱状",
       "STACKED_BAR": "堆叠柱状",
-      "STACKED_LINE":"堆叠折线",
-      "AREA_LINE":"面积折线",
+      "STACKED_LINE": "堆叠折线",
+      "AREA_LINE": "面积折线",
       "POLAR_BAR": "极地堆叠柱状",
-      "PERCENT_LINE":"百分比折线",
+      "PERCENT_LINE": "百分比折线",
       "AQUA": "蓝色",
       "RED": "红色",
       "YELLOW": "黄色",
@@ -191,7 +191,7 @@ export default {
       "COLOR": "透明度",
       "PREVIEW_QUERY": "预览查询",
       "PERCENT_BAR": "百分比堆叠",
-      "AGGREGATE_TYPE":"汇总类型",
+      "AGGREGATE_TYPE": "汇总类型",
       "GAUGE": "计量图",
       "ADD_NEW_STYLE": "添加样式",
       "LINE_STYLE": "线条样式",
@@ -223,9 +223,9 @@ export default {
       "CONTRAST": "对比图",
       "MARK_LINE_MAP": "标线地图",
       "HEAT_MAP": "热点地图",
-      "SCATTER_MAP":"散点地图",
-      "CHINA_MAP":"中国地图（本地）",
-      "CHINA_MAP_BMAP":"中国地图（百度）",
+      "SCATTER_MAP": "散点地图",
+      "CHINA_MAP": "中国地图（本地）",
+      "CHINA_MAP_BMAP": "中国地图（百度）",
       "RELATION": "关系图"
     },
     "DASHBOARD": {
@@ -249,14 +249,14 @@ export default {
       "LINKED_COLUMN": "参数关联上的列",
       "PARAM_TYPE": "交互类型",
       "PARAM_TYPE_SELECTOR": "选择器",
-	  "PARAM_TYPE_SELECTONE": "下拉框",
-	  "PARAM_TYPE_SELECTIZE": "下拉多选框",
-    "PARAM_TYPE_RANGEPICKER": "范围选择",
-    "PARAM_TYPE_RANGESLIDER": "数值范围选择",
-    "PARAM_TYPE_MULTISELECTTREE": "复选树形下拉框",
-    "PARAM_TYPE_THREESELECTOR": "三级联动下拉框",
+      "PARAM_TYPE_SELECTONE": "下拉框",
+      "PARAM_TYPE_SELECTIZE": "下拉多选框",
+      "PARAM_TYPE_RANGEPICKER": "范围选择",
+      "PARAM_TYPE_RANGESLIDER": "数值范围选择",
+      "PARAM_TYPE_MULTISELECTTREE": "复选树形下拉框",
+      "PARAM_TYPE_THREESELECTOR": "三级联动下拉框",
       "PARAM_TYPE_SLIDER": "滑动器",
-      "CHART_NAME":"图表名称",
+      "CHART_NAME": "图表名称",
       "ENTER_PARAMETER_NAME": "请输入参数名称",
       "DASHBOARD_SOMETHING_WRONG": "有部分图表访问出错,请检查看板的配置!",
       "VALUE_FORMMAT": "值格式化",
@@ -285,13 +285,13 @@ export default {
       "VALUE_FORMMAT_ALERT": "只有日期类型需要格式化",
       "AUTOMATIC_REFRESH_SWITCH": "自动刷新切换",
       "REMOVE_EMPTY_LINES": "清除空行",
-      "DATA_REFRESH_TIME":"数据刷新时间",
-      "WIDGET_TARGET":"关联图表",
-      "WIDGET_FIELDS":"图表维度",
-      "WIDGET_TARGET_FIELDS":"关联图表维度",
-      "BOARD_TARGET":"关联看板",
-      "BOARD_TARGET_PARAMS":"关联看板参数",
-      "RELATION":"关联"
+      "DATA_REFRESH_TIME": "数据刷新时间",
+      "WIDGET_TARGET": "关联图表",
+      "WIDGET_FIELDS": "图表维度",
+      "WIDGET_TARGET_FIELDS": "关联图表维度",
+      "BOARD_TARGET": "关联看板",
+      "BOARD_TARGET_PARAMS": "关联看板参数",
+      "RELATION": "关联"
     },
     "CATEGORY": {
       "NAME": "看板分类名称",
@@ -407,7 +407,7 @@ export default {
       "QUOTE_CHAR": "引用字符",
       "ESCAPE_CHAR": "逃避字符"
     },
-    "SOLR":{
+    "SOLR": {
       "SOLR_SERVERS": "Solr服务",
       "COLLECTION": "集合名称",
       "Q": "查询字段",
@@ -418,21 +418,21 @@ export default {
       "FL": "结果字段"
     }
   },
-  "CROSS_TABLE":{
+  "CROSS_TABLE": {
     "NEXT_PAGE": "下一页",
     "PREVIOUS_PAGE": "上一页",
     "SHOW": "显示",
     "ENTRIES": "条",
     "EXPORT": "导出"
   },
-  "HELP_MESSAGE":{
-    "CHINAMAP":{
-      "COLUMN":"需要2个或3个值, 2个值为：[经度,纬度组合列] + [带行政单位地理名称]; 3个值为：[经度] + [纬度] + [带行政单位地理名称]; 对于[标线地图]表示标线的源坐标",
-      "ROW":   "需要2个或3个值, 2个值为：[经度,纬度组合列] + [带行政单位地理名称]; 3个值为：[经度] + [纬度] + [带行政单位地理名称]; 对于[标线地图]表示标线的目标坐标"
+  "HELP_MESSAGE": {
+    "CHINAMAP": {
+      "COLUMN": "需要2个或3个值, 2个值为：[经度,纬度组合列] + [带行政单位地理名称]; 3个值为：[经度] + [纬度] + [带行政单位地理名称]; 对于[标线地图]表示标线的源坐标",
+      "ROW": "需要2个或3个值, 2个值为：[经度,纬度组合列] + [带行政单位地理名称]; 3个值为：[经度] + [纬度] + [带行政单位地理名称]; 对于[标线地图]表示标线的目标坐标"
     },
     "CHINAMAPBMAP": {
-      "COLUMN":"需要2个或3个值, 2个值为：[经度,纬度组合列] + [带行政单位地理名称]; 3个值为：[经度] + [纬度] + [带行政单位地理名称]; 对于[标线地图]表示标线的源坐标",
-      "ROW":   "需要2个或3个值, 2个值为：[经度,纬度组合列] + [带行政单位地理名称]; 3个值为：[经度] + [纬度] + [带行政单位地理名称]; 对于[标线地图]表示标线的目标坐标"
+      "COLUMN": "需要2个或3个值, 2个值为：[经度,纬度组合列] + [带行政单位地理名称]; 3个值为：[经度] + [纬度] + [带行政单位地理名称]; 对于[标线地图]表示标线的源坐标",
+      "ROW": "需要2个或3个值, 2个值为：[经度,纬度组合列] + [带行政单位地理名称]; 3个值为：[经度] + [纬度] + [带行政单位地理名称]; 对于[标线地图]表示标线的目标坐标"
     }
   }
 }

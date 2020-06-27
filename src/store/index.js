@@ -5,6 +5,8 @@ import menu from './modules/menu';
 import config from './modules/config';
 import params from './modules/params';
 import widget from './modules/widget';
+import user from './user'
+import getters from './getters'
 
 Vue.use(Vuex);
 
@@ -14,6 +16,8 @@ export default new Vuex.Store({
 		menu,
 		config,
 		params,
-		widget
-	}
+		widget,
+		user,
+	},
+	getters
 });

@@ -21,22 +21,22 @@ export function injectFilter(widget, filters) {
     }*/
     widget.config.boardFilters = boardFilters;
 
-    if(widget.config.chart_type !== 'sankey' && widget.config.chart_type !== 'map') {
+    if (widget.config.chart_type !== 'sankey' && widget.config.chart_type !== 'map') {
         /*var countryFilter = {
             col: 'SALES_COUNTRY',
             type: '=',
             //values: ['Canada']
             values: []
         };*/
-       /* var otherFilter = {
-            col: 'gender',
-            type: '=',
-            //values: ['F']
-            values: []
-        };*/
+        /* var otherFilter = {
+             col: 'gender',
+             type: '=',
+             //values: ['F']
+             values: []
+         };*/
         //widget.config.boardFilters.push(countryFilter);
         //widget.config.boardFilters.push(otherFilter);
-        if(filters) {
+        if (filters) {
             widget.config.boardFilters = widget.config.boardFilters.concat(filters);
         }
     }
@@ -46,14 +46,14 @@ export function injectFilter(widget, filters) {
 
 
 export function formatConfig(config) {
-	const dataSeries = getDataSeries(config);
-	let cfg = {rows: [], columns: [], filters: []}; 
+    const dataSeries = getDataSeries(config);
+    let cfg = { rows: [], columns: [], filters: [] };
     cfg.rows = getDimensionConfig(config.keys);
     cfg.columns = getDimensionConfig(config.groups);
     cfg.filters = getDimensionConfig(config.filters);
     cfg.filters = cfg.filters.concat(getDimensionConfig(config.boardFilters));
     cfg.values = dataSeries.map(function (s) {
-        return {column: s.name, aggType: s.aggregate};
+        return { column: s.name, aggType: s.aggregate };
     });
     return cfg;
 }
@@ -65,12 +65,12 @@ function getDimensionConfig(array) {
             if (e.group === undefined) {
                 let name = e.col || e.column;
                 let type = e.type === 'column' ? 'eq' : e.type;
-                result.push({columnName: name, filterType: type, values: e.values || [], id: e.id});
+                result.push({ columnName: name, filterType: type, values: e.values || [], id: e.id });
             } else {
                 e.filters.forEach(function (f) {
                     let name = f.col || f.column;
                     let type = f.type === 'column' ? 'eq' : f.type;
-                    result.push({columnName: name, filterType: f.type, values: f.values || []});
+                    result.push({ columnName: name, filterType: f.type, values: f.values || [] });
                 });
             }
         });
@@ -85,13 +85,13 @@ function getDataSeries(config) {
             var series = configToDataSeries(c);
             series.forEach(function (s) {
                 let isRepeat = false;
-                for(let i=0,l=result.length; i<l; i++) {
-                	if(JSON.stringify(result[i]) === JSON.stringify(s)) {
-                		isRepeat = true;
-                		break;
-                	}
+                for (let i = 0, l = result.length; i < l; i++) {
+                    if (JSON.stringify(result[i]) === JSON.stringify(s)) {
+                        isRepeat = true;
+                        break;
+                    }
                 }
-                if(!isRepeat) result.push(s);
+                if (!isRepeat) result.push(s);
             });
         });
     });
@@ -101,7 +101,7 @@ function getDataSeries(config) {
 function configToDataSeries(config) {
     switch (config.type) {
         case 'exp':
-        	alert('todo exp!');
+            alert('todo exp!');
             return [];
             break;
         default:

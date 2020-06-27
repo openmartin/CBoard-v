@@ -18,7 +18,7 @@ const actions = {
   getBoardData(context, id) {
     req.get(api.getBoardData + '?id=' + id)
       .then((response) => {
-        if(response.statusText === 'OK') {
+        if (response.statusText === 'OK') {
           const payload = {
             type: response.data.layout.type,
             boardData: response.data
@@ -52,11 +52,11 @@ const actions = {
       };
       req.post(api.getAggregateData, params)
         .then(response => {
-          if(response.statusText === 'OK') {
+          if (response.statusText === 'OK') {
             context.commit('setWidgetInfoData', response.data);
 
             let seriesData = null;
-            if(data.config) {
+            if (data.config) {
               seriesData = parseData(response.data, data.config);
             }
 
@@ -76,23 +76,23 @@ function parseData(data, config) {
   let keysIndexArr = [];
   let groupsIndexArr = [];
   let valueSeries = [];
-  for(let i=0,l=data.columnList.length; i<l; i++) {
+  for (let i = 0, l = data.columnList.length; i < l; i++) {
     let col = data.columnList[i];
-    for(let j=0; j<config.keys.length; j++) {
+    for (let j = 0; j < config.keys.length; j++) {
       let name = config.keys[j].col || config.keys[j].column; // 有时候有 col 字段，有时候为 colunm 字段。如新增的数据集，为 column 字段
-      if(name === col.name) {
+      if (name === col.name) {
         keysIndexArr.push(col.index);
       }
     }
 
-    for(let k=0; k<config.groups.length; k++) {
+    for (let k = 0; k < config.groups.length; k++) {
       let name = config.groups[k].col || config.groups[k].column; // 有时候有 col 字段，有时候为 colunm 字段。如新增的数据集，为 column 字段
-      if(name === col.name) {
+      if (name === col.name) {
         groupsIndexArr.push(col.index);
       }
     }
 
-    if(col.aggType) {
+    if (col.aggType) {
       valueSeries.push(col);
     }
   }
@@ -103,45 +103,45 @@ function parseData(data, config) {
   var keysData = [];
   var joinedGroups = {};
   var groupsData = [];
-  for(let i=0,l=data.data.length; i<l; i++) {
+  for (let i = 0, l = data.data.length; i < l; i++) {
     let item = data.data[i];
 
     // 获得 keys 的内容
     let keyArr = [];
-    for(let j=0; j<keysIndexArr.length; j++) {
-      keyArr.push( item[ keysIndexArr[j] ] );
+    for (let j = 0; j < keysIndexArr.length; j++) {
+      keyArr.push(item[keysIndexArr[j]]);
     }
 
     let KeyArrStr = keyArr.join('-');
-    if(!joinedKeys[KeyArrStr]) {
+    if (!joinedKeys[KeyArrStr]) {
       joinedKeys[KeyArrStr] = true;
       keysData.push(keyArr);
     }
 
     // 获得 groups 的内容
     let groupArr = [];
-    for(let j=0; j<groupsIndexArr.length; j++) {
-      groupArr.push( item[ groupsIndexArr[j] ] );
+    for (let j = 0; j < groupsIndexArr.length; j++) {
+      groupArr.push(item[groupsIndexArr[j]]);
     }
 
     let groupArrStr = groupArr.join('-');
-    if(!joinedGroups[groupArrStr]) {
+    if (!joinedGroups[groupArrStr]) {
       joinedGroups[groupArrStr] = true;
       groupsData.push(groupArr);
     }
 
     //构建 newData
-    for(let j=0; j<valueSeries.length; j++) {
+    for (let j = 0; j < valueSeries.length; j++) {
       let series = valueSeries[j];
-      if(typeof newData[groupArrStr] === 'undefined') {
+      if (typeof newData[groupArrStr] === 'undefined') {
         newData[groupArrStr] = {};
       }
 
-      if(typeof newData[groupArrStr][series.name]  === 'undefined') {
+      if (typeof newData[groupArrStr][series.name] === 'undefined') {
         newData[groupArrStr][series.name] = {};
       }
 
-      if(typeof newData[groupArrStr][series.name][series.aggType]  === 'undefined') {
+      if (typeof newData[groupArrStr][series.name][series.aggType] === 'undefined') {
         newData[groupArrStr][series.name][series.aggType] = {};
       }
 
@@ -155,8 +155,8 @@ function parseData(data, config) {
 
   function mSort(a, b) {
     var r = 0;
-    for(let i=0; i<a.length; i++) {
-      if(a[i] === b[i]) {
+    for (let i = 0; i < a.length; i++) {
+      if (a[i] === b[i]) {
         r = 0;
         continue;
       }
@@ -168,7 +168,7 @@ function parseData(data, config) {
 
   function toNumber(value) {
     let result = Number(value);
-    if(isNaN(result)) return value;
+    if (isNaN(result)) return value;
     return result;
   }
 

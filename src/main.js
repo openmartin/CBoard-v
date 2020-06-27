@@ -5,6 +5,7 @@ import App from './App';
 import router from './router';
 import i18n from './i18n/';
 import ElementUI from 'element-ui'; // In Dev
+import { Message } from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'; // In Dev
 import './styles/bootstrap.css';
 import 'admin-lte/dist/css/AdminLTE.min.css';
@@ -15,10 +16,53 @@ import numbro from 'numbro';
 import './utils/initEcharts.js';
 import req from '@/utils/http/request';
 import api from '@/utils/http/api';
+import { getToken } from '@/utils/auth'
 /*import { Menu, Submenu, MenuItem, Dialog, 
 		 Slider, Select, Option, Table, 
 		 TableColumn, DatePicker, Input, Tree,
-		 OptionGroup, Transfer, Switch } from 'element-ui';*/
+     OptionGroup, Transfer, Switch } from 'element-ui';*/
+     
+const whiteList = ['/login', '/auth-redirect', '/bind', '/register']
+
+router.beforeEach((to, from, next) => {
+  if (getToken()) {
+    /* has token */
+    if (to.path === '/login') {
+      next({ path: '/' })
+    } else {
+      if (store.getters.roles.length === 0) {
+        // 判断当前用户是否已拉取完user_info信息
+        store.dispatch('GetInfo').then(() => {
+          // 拉取user_info
+          store.dispatch('menu/getCategoryList');
+          store.dispatch('menu/getBoardList');
+          store.dispatch('menu/getMenuList').then(accessRoutes => {
+            // 测试 默认静态页面
+            // store.dispatch('permission/generateRoutes', { roles }).then(accessRoutes => {
+            // 根据roles权限生成可访问的路由表
+            router.addRoutes(accessRoutes) // 动态添加可访问路由表
+            next({ ...to, replace: true }) // hack方法 确保addRoutes已完成
+          })
+        })
+          .catch(err => {
+            store.dispatch('FedLogOut').then(() => {
+              Message.error(err)
+              next({ path: '/' })
+            })
+          })
+      } else {
+        next()
+      }
+    }
+  } else {
+    if (whiteList.indexOf(to.path) !== -1) {
+      // 在免登录白名单，直接进入
+      next()
+    } else {
+      next(`/login?redirect=${to.fullPath}`) // 否则全部重定向到登录页
+    }
+  }
+})
 
 Vue.config.productionTip = false;
 Vue.prototype.$numbro = numbro;
@@ -50,5 +94,5 @@ new Vue({
   store,
   i18n,
   components: { App },
-  template: '<App/>'
+  render: h => h(App)
 })

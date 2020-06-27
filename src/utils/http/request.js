@@ -1,12 +1,66 @@
 import axios from 'axios';
 import qs from 'qs';
+import { Notification, MessageBox, Message } from 'element-ui'
+import store from '@/store'
+import { getToken } from '@/utils/auth'
+import errorCode from '@/utils/errorCode'
 
+// 创建axios实例
+const service = axios.create({
+    baseURL: process.env.VUE_APP_BASE_API,
+    timeout: 60000
+})
 
-const axiosPost = axios.create({
-    transformRequest: [function (data, headers) {
-	    data = qs.stringify(data);
-	    return data;
-	  }]
+service.interceptors.request.use(config => {
+    const isToken = (config.headers || {}).isToken === false
+    if (getToken() && !isToken) {
+        config.headers['Authorization'] = 'Bearer ' + getToken()
+    }
+    return config
+}, error => {
+    console.log(error)
+    Promise.reject(error)
+})
+
+service.interceptors.response.use(res => {
+    const code = res.data.code || 200
+    const message = errorCode[code] || res.data.msg || errorCode['default']
+    if (code === 401) {
+        MessageBox.confirm(
+            '登录状态已过期，您可以继续留在该页面，或者重新登录',
+            '系统登录',
+            {
+                confirmButtonText: '重新登录',
+                cancelButtonText: '取消',
+                type: 'warning'
+            }
+        ).then(() => {
+            store.dispatch('Logout').then(() => {
+                location.reload()
+            })
+        })
+    } else if (code === 500) {
+        Message({
+            message: message,
+            type: 'error'
+        })
+        return Promise.reject(new Error(message))
+    } else if (code != 200) {
+        Notification.error({
+            title: message
+        })
+        return Promise.reject('error')
+    } else {
+        return res
+    }
+}, error => {
+    console.log('err ' + error)
+    Message({
+        message: error.message,
+        type: 'error',
+        duration: 5 * 1000
+    })
+    return Promise.reject(error)
 })
 
 //axiosPost.defaults.withCredentials = true;
@@ -46,26 +100,26 @@ axiosPost.interceptors.response.use(function (response) {
 let sourceCollection = [];
 
 const req = {
-	get(url) {
+    get(url) {
         const CancelToken = axios.CancelToken;
         const source = CancelToken.source();
         sourceCollection.push(source);
-		return axios.get(url, { cancelToken: source.token });
-	},
+        return service.get(url, { cancelToken: source.token });
+    },
 
-	post(url, params, isJson) {
+    post(url, params, isJson) {
         const CancelToken = axios.CancelToken;
         const source = CancelToken.source();
         sourceCollection.push(source);
-        if(isJson) {
-            return axios.post(url, params, { cancelToken: source.token });
-        }else {
-            return axiosPost.post(url, params, { cancelToken: source.token });
+        if (isJson) {
+            return service.post(url, params, { cancelToken: source.token });
+        } else {
+            return service.post(url, null, { params: params }, { cancelToken: source.token });
         }
-	},
-    
+    },
+
     abort() {
-        for(let i=0,l=sourceCollection.length; i<l; i++) {
+        for (let i = 0, l = sourceCollection.length; i < l; i++) {
             sourceCollection[i].cancel('shit');
         }
         sourceCollection = [];

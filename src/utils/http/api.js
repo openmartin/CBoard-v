@@ -1,4 +1,4 @@
-const baseurl = '/api/'; // In Dev
+const baseurl = '/'; // In Dev
 //const baseurl = '生产环境 CBoard 访问路径';  // In Production
 const api = {
 	//登录
@@ -38,7 +38,7 @@ const api = {
 	saveNewCategory: baseurl + 'dashboard/saveNewCategory.do',
 	//删除 dashboard category
 	deleteCategory: baseurl + 'dashboard/deleteCategory.do',
-	//修改 dashboard category
+	//修改 dashboard categorydata
 	updateCategory: baseurl + 'dashboard/updateCategory.do',
 
 	/*----widget config----*/
